@@ -27,7 +27,7 @@ function Header() {
 
             {/* Right */}
             <div className='flex items-center justify-end space-x-6'>
-                <PlusCircleIcon className='navBtn text-indigo-500'/>
+                <PlusCircleIcon className='navBtn text-[rgb(72,69,210)]'/>
                 
                 <BellIcon className='navBtn'/>
                 <img className='h-10 rounded-full cursor-pointer' src='https://pbs.twimg.com/profile_images/1339645767456317440/I88FwsEv_400x400.jpg' alt='profile pic' />
