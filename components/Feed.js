@@ -14,20 +14,7 @@ function Feed() {
       <PostHeader />
       <div className='lg:mt-12'>
       <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
-      <Posts />
+      
       </div>
       </section>
       

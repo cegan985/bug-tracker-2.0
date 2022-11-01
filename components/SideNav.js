@@ -1,7 +1,9 @@
 import React from 'react'
 import { HomeIcon, BugAntIcon, AdjustmentsHorizontalIcon, ArrowLeftOnRectangleIcon} from '@heroicons/react/24/outline'
+import { signIn, signOut, useSession, } from 'next-auth/react'
 
 function SideNav() {
+    const {data: session} = useSession()
   return (
     <div>
         <div className='grid grid-cols-1 justify-start bg-white border-r p-6 w-1/2 h-[calc(100vh-71px)] z-20 fixed -left-96 lg:w-64 lg:left-0 peer-focus:left-0 peer:transition ease-out delay-150 duration-200'>
@@ -19,7 +21,7 @@ function SideNav() {
                         <AdjustmentsHorizontalIcon className='navBtn'/>
                         <h3 className='font-semibold'>Settings</h3>
                     </div>
-                    <div className='flex hover:scale-105 transition-all duration-150 ease-out active:scale-100 mb-2 justify-start items-center gap-4 hover:bg-gray-100 p-3 rounded-md group cursor-pointer hover:shadow-lg m-auto'>
+                    <div onClick={() => { signOut({ redirect: true, callbackUrl: '/auth/signin', }); }} className='flex hover:scale-105 transition-all duration-150 ease-out active:scale-100 mb-2 justify-start items-center gap-4 hover:bg-gray-100 p-3 rounded-md group cursor-pointer hover:shadow-lg m-auto'>
                         <ArrowLeftOnRectangleIcon className='navBtn'/>
                         <h3 className='font-semibold'>Log out</h3>
                     </div>
