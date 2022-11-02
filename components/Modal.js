@@ -14,6 +14,7 @@ function Modal() {
     const [bug , setBug] = useState('')
     const [assignee , setAssignee] = useState('')
     const bugRef = useRef(null)
+    const statusRef = useRef(null)
     const severityRef = useRef(null)
     const assigneeRef = useRef(null)
 
@@ -37,6 +38,7 @@ function Modal() {
             profileImg: session.user.image,
             bug: bugRef.current.value,
             severity: severityRef.current.value,
+            status: statusRef.current.value,
             assignee: assigneeRef.current.value,
             timestamp: serverTimestamp()
         })
@@ -94,6 +96,13 @@ function Modal() {
                         <div className='pt-4'>
                         <h1 className='pb-2'>Assign To</h1>
                         <input onChange={handleAssigneeChange} ref={assigneeRef} type='text' className='bugForm'/>
+                        </div>
+                        <div className='pt-4'>
+                        <h1 className='pb-2'>Status</h1>
+                        <select ref={statusRef} className='bugForm'>
+                            <option>Open</option>
+                            <option>Closed</option>
+                        </select>
                         </div>
                         <div className='pt-4 flex justify-end'>
                         <button onClick={uploadPost} disabled={!bug || !assignee} type='button' className='disabled:cursor-not-allowed disabled:ring-0 disabled:text-white disabled:bg-gray-300 flex justify-end bg-[rgb(72,69,210)] text-white rounded-md hover:bg-white hover:text-[rgb(72,69,210)] hover:ring-1 hover:ring-[rgb(72,69,210)] hover:shadow-lg cursor-pointer hover:scale-105 transition-all duration-150 ease-out active:scale-100 p-2'>{loading ? 'Submitting...' : 'Submit'}</button>
