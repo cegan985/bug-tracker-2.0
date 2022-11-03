@@ -1,59 +1,20 @@
-import React, { Fragment, useRef, useState } from 'react'
-import { useRecoilState } from 'recoil'
-import { modalState } from '../atoms/modalAtom'
 import { Dialog, Transition } from '@headlessui/react'
-import { db, storage } from '../firebase'
-import { addDoc, doc, collection, serverTimestamp } from 'firebase/firestore'
-import { useSession } from 'next-auth/react'
+import React, { Fragment, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import { menuState } from '../atoms/bugDropAtom'
+import {  Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 
-function Modal() {
-    const { data: session } = useSession()
-    const [ open, setOpen ] = useRecoilState(modalState)
-    const [ loading, setLoading ] = useState(false)
-    const [bug , setBug] = useState('')
-    const [assignee , setAssignee] = useState('')
-    const bugRef = useRef(null)
-    const statusRef = useRef(null)
-    const severityRef = useRef(null)
-    const assigneeRef = useRef(null)
 
-    const handleBugChange = (event) => {
-        setBug(event.target.value);
-      };
-    
-    const handleAssigneeChange = (event) => {
-        setAssignee(event.target.value);
-      };
-   
-    
-
-    const uploadPost = async () => {
-        if(loading) return
-
-        setLoading(true)
-
-        const docRef = await addDoc(collection(db, 'posts'), {
-            username: session.user.name,
-            profileImg: session.user.image,
-            bug: bugRef.current.value,
-            severity: severityRef.current.value,
-            status: statusRef.current.value,
-            assignee: assigneeRef.current.value,
-            timestamp: serverTimestamp()
-        })
-
-        //console.log('New doc added', docRef.id)
-        setOpen(false)
-        setLoading(false)
-    }
-
-    
-    
-
+function BugDropdown() {
+    const [ open, setOpen] = useRecoilState(menuState)
+  
   return (
+
+
     <Transition.Root show={open} as={Fragment}>
-        <Dialog as='div' className='fixed z-40 inset-0 overflow-y-auto' onClose={setOpen}>
+        <Dialog as='div' className='fixed z-10 inset-0 overflow-y-auto' onClose={setOpen}>
 
             <div className='flex items-end justify-center min-h-[800px] sm:min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0'>
                 <Transition.Child 
@@ -77,9 +38,9 @@ function Modal() {
                 leave='ease-in duration-200'
                 leaveFrom='opacity-100 translate-y-0 sm:scale-100'
                 leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'>
-                    <div className='inline-block align-bottom bg-white dark:bg-slate-800 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6'>
+                    <div className='inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6'>
                         <div className='text-center'>
-                        <h1 className='justify-between font-semibold dark:text-white'>Add New Bug</h1>
+                        <h1 className='justify-between font-semibold'>Add New Bug</h1>
                         </div>
                         <div className='pt-4'>
                         <h1 className='pb-2'>Bug Description</h1>
@@ -115,4 +76,5 @@ function Modal() {
   )
 }
 
-export default Modal
+
+export default BugDropdown
