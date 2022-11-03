@@ -21,7 +21,7 @@ function Header() {
     //console.log(session)
 
   return (
-    <div className='border-b bg-white dark dark:bg-slate-800 sticky top-0 z-50'>
+    <div className='border-b dark:border-slate-700 bg-white dark dark:bg-slate-800 sticky top-0 z-50'>
         <div className='flex justify-between max-w-6xl pt-1 pb-1 mx-5 xl:mx-auto'>
             {/* Left */}
             <div className='relative w-32 cursor-pointer'>
