@@ -49,7 +49,7 @@ function Posts() {
             id={post.id}
             bug={post.data().bug}
             reporter={post.data().username}
-            date={post.date}
+            date={post.data().timestamp}
             status={post.data().status}
             assignee={post.data().assignee}
             severity={post.data().severity}

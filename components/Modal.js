@@ -95,7 +95,7 @@ function Modal() {
                         </div>
                         <div className='pt-4'>
                         <h1 className='pb-2'>Assign To</h1>
-                        <input onChange={handleAssigneeChange} ref={assigneeRef} type='text' className='bugForm'/>
+                        <input onChange={handleAssigneeChange} ref={assigneeRef} type='text' className='bugForm' placeholder='Assign To'/>
                         </div>
                         <div className='pt-4'>
                         <h1 className='pb-2'>Status</h1>

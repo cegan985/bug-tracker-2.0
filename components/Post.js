@@ -5,6 +5,8 @@ import PostHeader from './PostHeader'
 import {menuState} from '../atoms/bugDropAtom'
 import { useRecoilState } from 'recoil'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import moment from 'moment'
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -13,6 +15,7 @@ function classNames(...classes) {
 function Post({ bug, reporter, date, status, assignee, severity }) {
   const {data: session} = useSession()
   const [open, setOpen] = useRecoilState(menuState)
+
 
   return (
     <div className='container mx-auto sm:px-8'>
@@ -43,7 +46,7 @@ function Post({ bug, reporter, date, status, assignee, severity }) {
                 </div>
               </td>
               <td class="px-5 py-5 border-b border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 w-36 text-sm">
-                <p class="text-gray-900 dark:text-white whitespace-no-wrap">Sept 28, 2019</p>
+                <p class="text-gray-900 dark:text-white whitespace-no-wrap">{moment(date.toDate()).format("MMM Do YY")}</p>
                 <p class="text-gray-600 dark:text-slate-200 whitespace-no-wrap">Due in 3 days</p>
               </td>
               <td class="px-5 py-5 border-b border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800 w-32 text-sm">

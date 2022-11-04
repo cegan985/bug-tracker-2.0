@@ -39,7 +39,7 @@ function Header() {
                 <div className='absolute inset-y-0 pl-3 flex items-center pointer-events-none'>
                     <MagnifyingGlassIcon className='h-5 w-5 text-gray-500'/>
                 </div>
-                <input className='bg-gray-50 dark:text-black block w-full pl-10 sm:text-sm border-gray-300 rounded-md focus:ring-[rgb(72,69,210)] focus:border-[rgb(72,69,210)]' type='text' placeholder='Search by Names, Bugs or Other'/>
+                <input className='bg-gray-50 dark:bg-slate-900 dark:text-gray-500 block w-full pl-10 sm:text-sm border-gray-300 dark:border-slate-700 rounded-md focus:ring-[rgb(72,69,210)] focus:border-[rgb(72,69,210)]' type='text' placeholder='Search by Names, Bugs or Other'/>
             </div>
 
             {/* Right */}
@@ -51,7 +51,7 @@ function Header() {
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="">
-                <img className='h-10 w-10 rounded-full cursor-pointer border p-[1.5px] ' src={session.user.image} alt='profile pic' />
+                <img className='h-10 w-10 rounded-full cursor-pointer border p-[1.5px]' src={session.user.image} alt='profile pic' />
         </Menu.Button>
       </div>
 
@@ -64,14 +64,14 @@ function Header() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-50 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-50 mt-2 w-56 origin-top-right rounded-md border dark:border-slate-700 bg-white dark:bg-slate-800 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (
                 <a
                   href="#"
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    active ? 'bg-gray-100 dark:bg-slate-700 dark:text-white text-gray-900 border-b dark:border-slate-700' : 'text-gray-700 dark:text-white border-b dark:border-slate-700',
                     'block px-4 py-2 text-sm'
                   )}
                 >
@@ -84,7 +84,7 @@ function Header() {
                 <a
                   href="#"
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    active ? 'bg-gray-100 dark:bg-slate-700 dark:text-white text-gray-900 border-b dark:border-slate-700' : 'text-gray-700 dark:text-white border-b dark:border-slate-700',
                     'block px-4 py-2 text-sm'
                   )}
                 >
@@ -97,7 +97,7 @@ function Header() {
                 <a
                   href="#"
                   className={classNames(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                    active ? 'bg-gray-100 dark:bg-slate-700 dark:text-white text-gray-900 border-b dark:border-slate-700' : 'text-gray-700 dark:text-white border-b dark:border-slate-700',
                     'block px-4 py-2 text-sm'
                   )}
                 >
@@ -112,7 +112,7 @@ function Header() {
                     onClick={() => { signOut({ redirect: true, callbackUrl: '/auth/signin', }); }}
                     type='button'
                     className={classNames(
-                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      active ? 'bg-gray-100 dark:bg-slate-700 dark:text-white text-gray-900' : 'text-gray-700 dark:text-white',
                       'block w-full px-4 py-2 text-left text-sm'
                     )}
                   >
